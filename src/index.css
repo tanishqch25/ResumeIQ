@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ──────────────────────────────────── */
+:root {
+  --color-background: #F8FAF7;
+  --color-surface:    #FFFFFF;
+  --color-primary:    #164E45;
+  --color-secondary:  #2563EB;
+  --color-accent:     #3F8F6B;
+  --color-soft-green: #E8F3EC;
+  --color-soft-blue:  #EAF1FB;
+  --color-text:       #17211D;
+  --color-muted:      #66736D;
+  --color-border:     #DDE5DF;
+  --color-warning:    #B3413A;
+  --color-amber:      #B8863A;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Inter", "Geist", "Manrope", system-ui, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Focus Styles ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* ─── Staggered animation utility ───────────────────────────── */
+@layer utilities {
+  .animate-delay-1 { animation-delay: 40ms; }
+  .animate-delay-2 { animation-delay: 80ms; }
+  .animate-delay-3 { animation-delay: 120ms; }
+  .animate-delay-4 { animation-delay: 160ms; }
+  .animate-delay-5 { animation-delay: 200ms; }
+  .animate-delay-6 { animation-delay: 240ms; }
+  .animate-delay-7 { animation-delay: 280ms; }
+  .animate-delay-8 { animation-delay: 320ms; }
+
+  .animate-fill-both { animation-fill-mode: both; }
+}
+
+/* ─── Dashboard page transition ─────────────────────────────── */
+/* [21ST_COMPONENT_SLOT: DASHBOARD_TRANSITION] — CSS fade/slide on route change */
+.page-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+/* ─── Score Ring Animation ───────────────────────────────────── */
+/* [21ST_COMPONENT_SLOT: SCORE_VISUALIZATION] — SVG ring stroke animation */
+@keyframes ringFill {
+  from { stroke-dashoffset: var(--ring-circumference); }
+  to   { stroke-dashoffset: var(--ring-offset); }
+}
+
+.score-ring-animated {
+  animation: ringFill 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Score counter animation ────────────────────────────────── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.score-count-animate {
+  animation: countUp 0.4s ease both;
+  animation-delay: 0.3s;
+}
+
+/* ─── Analysis Progress ──────────────────────────────────────── */
+/* [21ST_COMPONENT_SLOT: ANALYSIS_PROGRESS] */
+@keyframes checkmarkDraw {
+  from { stroke-dashoffset: 20; }
+  to   { stroke-dashoffset: 0; }
+}
+.checkmark-animate {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: checkmarkDraw 0.25s ease forwards;
+}
+
+/* ─── Upload zone transitions ────────────────────────────────── */
+/* [21ST_COMPONENT_SLOT: FILE_UPLOAD] */
+.dropzone-transition {
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
