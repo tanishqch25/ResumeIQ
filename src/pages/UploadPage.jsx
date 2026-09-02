@@ -43,13 +43,26 @@ export default function UploadPage() {
           </p>
         </div>
 
+        {/* CTA above the drop zone — explains what to do and what you get */}
+        <div className="animate-slide-up animate-fill-both animate-delay-1 mb-4 p-4 bg-soft-green rounded-lg border border-accent/20">
+          <p className="text-sm font-medium text-primary mb-1">
+            Upload your resume — PDF or DOCX
+          </p>
+          <p className="text-sm text-muted leading-relaxed">
+            Your resume will be checked for ATS compatibility, section
+            structure, keyword coverage, formatting quality, and skills
+            alignment. You&rsquo;ll receive a scored breakdown and a
+            prioritized list of specific improvements.
+          </p>
+        </div>
+
         {/* DropZone */}
-        <div className="animate-slide-up animate-fill-both animate-delay-1">
+        <div className="animate-slide-up animate-fill-both animate-delay-2">
           <DropZone onFileSelected={setSelectedFile} />
         </div>
 
         {/* Analyze button */}
-        <div className="mt-6 flex justify-center animate-slide-up animate-fill-both animate-delay-2">
+        <div className="mt-6 flex justify-center animate-slide-up animate-fill-both animate-delay-3">
           <Button
             variant="primary"
             size="lg"
@@ -61,7 +74,7 @@ export default function UploadPage() {
         </div>
 
         {/* Privacy note */}
-        <p className="text-caption text-muted text-center mt-4 animate-fade-in animate-fill-both animate-delay-3">
+        <p className="text-caption text-muted text-center mt-4 animate-fade-in animate-fill-both animate-delay-4">
           Your resume is processed 100% locally in your browser and never sent to any server.
         </p>
       </main>

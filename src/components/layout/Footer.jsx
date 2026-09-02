@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const productLinks = ["Features", "How It Works", "Pricing", "Changelog"];
-const companyLinks = ["About", "Blog", "Careers", "Contact"];
-const legalLinks   = ["Privacy Policy", "Terms of Service", "Cookie Policy"];
-
 export function Footer() {
   return (
     <footer className="bg-surface border-t border-border mt-20" aria-label="Site footer">
@@ -21,39 +17,110 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Product */}
+          {/* Product — links to real sections */}
           <div>
-            <h3 className="text-caption font-semibold text-text uppercase tracking-wider mb-3">Product</h3>
+            <h3 className="text-caption font-semibold text-text uppercase tracking-wider mb-3">
+              Product
+            </h3>
             <ul className="flex flex-col gap-2 list-none">
-              {productLinks.map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-sm text-muted hover:text-text transition-colors duration-150">{l}</a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#features"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#how-it-works"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  FAQ
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Tools — links to real app sections */}
           <div>
-            <h3 className="text-caption font-semibold text-text uppercase tracking-wider mb-3">Company</h3>
+            <h3 className="text-caption font-semibold text-text uppercase tracking-wider mb-3">
+              Tools
+            </h3>
             <ul className="flex flex-col gap-2 list-none">
-              {companyLinks.map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-sm text-muted hover:text-text transition-colors duration-150">{l}</a>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/upload"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  Resume Analyzer
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/ats"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  ATS Compatibility Check
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/job-match"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  Job Description Matcher
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/improve"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  Resume Improvement
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Get started */}
           <div>
-            <h3 className="text-caption font-semibold text-text uppercase tracking-wider mb-3">Legal</h3>
+            <h3 className="text-caption font-semibold text-text uppercase tracking-wider mb-3">
+              Get Started
+            </h3>
             <ul className="flex flex-col gap-2 list-none">
-              {legalLinks.map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-sm text-muted hover:text-text transition-colors duration-150">{l}</a>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/upload"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  Analyze My Resume
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/overview"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  View Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/recommendations"
+                  className="text-sm text-muted hover:text-text transition-colors duration-150"
+                >
+                  View Recommendations
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -83,3 +150,4 @@ function LogoMark() {
     </svg>
   );
 }
+

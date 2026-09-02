@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { MobileNav } from "./MobileNav";
+import { Breadcrumb } from "../shared/Breadcrumb";
 
 /**
  * DashboardShell — persistent shell wrapping all /dashboard/* routes.
@@ -10,9 +11,49 @@ import { MobileNav } from "./MobileNav";
  * [21ST_COMPONENT_SLOT: DASHBOARD_TRANSITION] — page content uses CSS fade on route change
  */
 
+/**
+ * Route → breadcrumb trail map.
+ * Each entry is the ordered trail for that exact pathname.
+ * The last item in each array is the current page (no `to`).
+ */
+const ROUTE_BREADCRUMBS = {
+  "/dashboard/overview": [
+    { label: "Home", to: "/" },
+    { label: "Resume Analysis" },
+  ],
+  "/dashboard/ats": [
+    { label: "Home", to: "/" },
+    { label: "Resume Analysis", to: "/dashboard/overview" },
+    { label: "ATS Compatibility" },
+  ],
+  "/dashboard/job-match": null, // JobMatchPage renders its own breadcrumb
+  "/dashboard/recommendations": [
+    { label: "Home", to: "/" },
+    { label: "Resume Analysis", to: "/dashboard/overview" },
+    { label: "Recommendations" },
+  ],
+  "/dashboard/improve": [
+    { label: "Home", to: "/" },
+    { label: "Resume Analysis", to: "/dashboard/overview" },
+    { label: "Resume Improvement" },
+  ],
+  "/dashboard/history": [
+    { label: "Home", to: "/" },
+    { label: "Resume Analysis", to: "/dashboard/overview" },
+    { label: "Analysis History" },
+  ],
+  "/dashboard/settings": [
+    { label: "Home", to: "/" },
+    { label: "Resume Analysis", to: "/dashboard/overview" },
+    { label: "Settings" },
+  ],
+};
+
 export function DashboardShell() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const location = useLocation();
+
+  const breadcrumbItems = ROUTE_BREADCRUMBS[location.pathname];
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -58,6 +99,11 @@ export function DashboardShell() {
           id="main-content"
           tabIndex="-1"
         >
+          {/* Shell-level breadcrumb — rendered for most dashboard pages.
+              null means the page renders its own (e.g. JobMatchPage). */}
+          {breadcrumbItems != null && (
+            <Breadcrumb items={breadcrumbItems} />
+          )}
           <Outlet />
         </main>
 
@@ -67,6 +113,7 @@ export function DashboardShell() {
     </div>
   );
 }
+
 
 function LogoMark() {
   return (

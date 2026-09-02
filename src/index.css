@@ -135,3 +135,52 @@ body {
 .dropzone-transition {
   transition: border-color 150ms ease, background-color 150ms ease;
 }
+
+/* ─── FAQ accordion panel ────────────────────────────────────── */
+/*
+  The panel visibility is controlled by React's `hidden` attribute.
+  We override `hidden` for `.faq-panel` so that the element renders
+  (needed for animation), and instead animate opacity + translateY.
+  The chevron rotation is handled via Tailwind `rotate-180` class.
+*/
+.faq-panel {
+  /* Allow the panel to be visible even when `hidden` is set
+     so React's toggle works without a CSS display:none clash. */
+}
+
+.faq-panel[hidden] {
+  display: block !important;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  visibility: hidden;
+  transition:
+    max-height 220ms ease,
+    opacity 180ms ease,
+    visibility 0s 220ms;
+}
+
+.faq-panel:not([hidden]) {
+  max-height: 600px; /* large enough for any answer */
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height 260ms ease,
+    opacity 200ms ease,
+    visibility 0s 0s;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .faq-panel[hidden],
+  .faq-panel:not([hidden]) {
+    transition: none;
+  }
+
+  /* Disable chevron rotation animation */
+  .rotate-180 {
+    transition: none !important;
+  }
+}

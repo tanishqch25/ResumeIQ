@@ -15,6 +15,7 @@ const RecommendationsPage = lazy(() => import("./pages/dashboard/Recommendations
 const ImprovePage         = lazy(() => import("./pages/dashboard/ImprovePage"));
 const HistoryPage         = lazy(() => import("./pages/dashboard/HistoryPage"));
 const SettingsPage        = lazy(() => import("./pages/dashboard/SettingsPage"));
+const NotFoundPage        = lazy(() => import("./pages/NotFoundPage"));
 
 function PageLoader() {
   return (
@@ -50,8 +51,8 @@ export default function App() {
               <Route path="settings"         element={<SettingsPage />} />
             </Route>
 
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Fallback — 404 for any unknown route */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </HashRouter>
