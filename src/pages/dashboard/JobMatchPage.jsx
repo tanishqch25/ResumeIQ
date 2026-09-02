@@ -2,6 +2,7 @@ import React from "react";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { JobDescriptionInput, MatchResults } from "../../components/dashboard/jobmatch/MatchResults";
 import { Breadcrumb } from "../../components/shared/Breadcrumb";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const JOB_MATCH_BREADCRUMBS = [
   { label: "Home", to: "/" },
@@ -10,6 +11,7 @@ const JOB_MATCH_BREADCRUMBS = [
 ];
 
 export default function JobMatchPage() {
+  useDocumentTitle("Job Description Matcher | ResumeIQ");
   const { jobMatch, isMatchAnalyzing, analyzeJobMatch, clearJobMatch } = useAnalysis();
 
   return (

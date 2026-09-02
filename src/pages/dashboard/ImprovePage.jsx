@@ -1,8 +1,10 @@
 import React from "react";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { ComparisonRow } from "../../components/dashboard/improve/ComparisonRow";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export default function ImprovePage() {
+  useDocumentTitle("Resume Improvement Suggestions | ResumeIQ");
   const { analysis } = useAnalysis();
 
   return (

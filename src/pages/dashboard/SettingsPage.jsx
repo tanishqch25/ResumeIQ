@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Card } from "../../components/shared/Card";
 import { Button } from "../../components/shared/Button";
 import { Toast } from "../../components/shared/Toast";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export default function SettingsPage() {
+  useDocumentTitle("Account Settings | ResumeIQ");
   const [showSaved, setShowSaved] = useState(false);
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [autoSave, setAutoSave]     = useState(false);

@@ -2,8 +2,10 @@ import React from "react";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { RecommendationGroup } from "../../components/dashboard/recommendations/RecommendationCard";
 import { EmptyState } from "../../components/shared/EmptyState";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export default function RecommendationsPage() {
+  useDocumentTitle("Resume Recommendations | ResumeIQ");
   const { analysis } = useAnalysis();
   const { recommendations } = analysis;
   const totalCount = (recommendations.high?.length ?? 0) +

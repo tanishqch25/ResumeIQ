@@ -1,8 +1,10 @@
 import React from "react";
 import { useAnalysis } from "../../hooks/useAnalysis";
 import { ATSScorePanel } from "../../components/dashboard/ats/ATSScorePanel";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export default function ATSPage() {
+  useDocumentTitle("ATS Compatibility Analysis | ResumeIQ");
   const { analysis } = useAnalysis();
 
   return (

@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { DropZone } from "../components/upload/DropZone";
 import { Button } from "../components/shared/Button";
 import { useAnalysisContext } from "../context/AnalysisContext";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function UploadPage() {
+  useDocumentTitle("Upload Your Resume | ResumeIQ");
   const [selectedFile, setSelectedFile] = useState(null);
   const { setPendingFile, setError } = useAnalysisContext();
   const navigate = useNavigate();

@@ -1,7 +1,9 @@
 import React from "react";
 import { HistoryTable } from "../../components/dashboard/history/HistoryTable";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export default function HistoryPage() {
+  useDocumentTitle("Analysis History | ResumeIQ");
   return (
     <div>
       <div className="mb-8">

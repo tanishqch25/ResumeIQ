@@ -8,6 +8,7 @@ import InteractiveNeuralVortex from "@/components/ui/interactive-neural-vortex-b
 const LandingPage         = lazy(() => import("./pages/LandingPage"));
 const UploadPage          = lazy(() => import("./pages/UploadPage"));
 const AnalyzingPage       = lazy(() => import("./pages/AnalyzingPage"));
+const ThankYouPage        = lazy(() => import("./pages/ThankYouPage"));
 const OverviewPage        = lazy(() => import("./pages/dashboard/OverviewPage"));
 const ATSPage             = lazy(() => import("./pages/dashboard/ATSPage"));
 const JobMatchPage        = lazy(() => import("./pages/dashboard/JobMatchPage"));
@@ -35,9 +36,10 @@ export default function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Public routes */}
-            <Route path="/"         element={<LandingPage />} />
-            <Route path="/upload"   element={<UploadPage />} />
+            <Route path="/"          element={<LandingPage />} />
+            <Route path="/upload"    element={<UploadPage />} />
             <Route path="/analyzing" element={<AnalyzingPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
 
             {/* Dashboard shell — persistent sidebar layout */}
             <Route path="/dashboard" element={<DashboardShell />}>

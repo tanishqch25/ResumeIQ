@@ -7,8 +7,10 @@ import { SectionCard } from "../../components/dashboard/sections/SectionCard";
 import { Button } from "../../components/shared/Button";
 import { Badge, statusToVariant } from "../../components/shared/Badge";
 import { Toast } from "../../components/shared/Toast";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export default function OverviewPage() {
+  useDocumentTitle("Resume Overview | ResumeIQ");
   const { analysis } = useAnalysis();
   const navigate = useNavigate();
   const [showToast, setShowToast] = useState(false);

@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { AnalysisProgress } from "../components/analyzing/AnalysisProgress";
 import { useAnalysisContext } from "../context/AnalysisContext";
 import { Button } from "../components/shared/Button";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function AnalyzingPage() {
+  useDocumentTitle("Analyzing Your Resume | ResumeIQ");
   const navigate = useNavigate();
   const { pendingFile, processFile } = useAnalysisContext();
   const [analysisError, setAnalysisError] = useState(null);
@@ -41,7 +43,7 @@ export default function AnalyzingPage() {
   }, [pendingFile, processFile]);
 
   const handleComplete = useCallback(() => {
-    navigate("/dashboard/overview", { replace: true });
+    navigate("/thank-you", { replace: true });
   }, [navigate]);
 
   return (

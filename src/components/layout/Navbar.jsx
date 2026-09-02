@@ -13,9 +13,20 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   const navLinks = [
     { label: "Features",    href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
+    { label: "Reviews",     href: "#reviews" },
     { label: "FAQ",          href: "#faq" },
   ];
 
@@ -69,6 +80,7 @@ export function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           {menuOpen ? <XIcon /> : <HamburgerIcon />}
         </button>
@@ -76,13 +88,13 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-surface border-b border-border px-6 py-4">
-          <ul className="flex flex-col gap-4 list-none mb-4">
+        <div id="mobile-menu" className="md:hidden bg-surface border-b border-border px-6 py-4 animate-slide-up animate-fill-both">
+          <ul className="flex flex-col gap-4 list-none mb-4" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-body text-muted hover:text-text transition-colors"
+                  className="text-body text-muted hover:text-text transition-colors block py-1"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}

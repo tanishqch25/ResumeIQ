@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/shared/Button";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 /**
  * NotFoundPage — catch-all 404 route.
@@ -10,6 +11,7 @@ import { Button } from "../components/shared/Button";
  * No illustrations, no heavy animation — clean, professional.
  */
 export default function NotFoundPage() {
+  useDocumentTitle("Page Not Found | ResumeIQ");
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-6 py-20">
       <div className="text-center max-w-md w-full animate-slide-up animate-fill-both">

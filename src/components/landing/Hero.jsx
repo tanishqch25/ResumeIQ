@@ -147,7 +147,7 @@ function MiniScoreRing({ score }) {
 
   return (
     <div className="flex flex-col items-center shrink-0">
-      <svg width="80" height="80" viewBox="0 0 80 80">
+      <svg width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
         <circle cx="40" cy="40" r={r} fill="none" stroke="#DDE5DF" strokeWidth="6" />
         <circle
           cx="40" cy="40" r={r}
